@@ -2,15 +2,15 @@
 
 - Dib2Calc, aka Dibdib Calculator:
 
-https://gitlab.com/dibdib/Dib2Calc
+  https://gitlab.com/dibdib/Dib2Calc
 
 - Dib2Qm, aka Dibdib Messenger:
 
-https://gitlab.com/gxworks/Dib2Qm
+  https://gitlab.com/gxworks/Dib2Qm
 
 - Dib2Co, aka Dibdib Console (reader):
 
-https://gitlab.com/gxworks/Dib2Co
+  https://gitlab.com/gxworks/Dib2Co
 
 - Dib2Note (not yet)
 

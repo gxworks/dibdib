@@ -5,7 +5,7 @@
 - Dib2Co, aka Dibdib Console
 - Dib2Note (not yet)
 
-See https://gxworks.github.io/dibdib for further details.
+See 'docs' or https://gxworks.github.io/dibdib for further details.
 
 Copyright (C) 2016,2017,2018,2019,2020  Roland Horsch < gx work s{at}g mail.c om >.
 
