@@ -1,10 +1,16 @@
 # Dib2 ('dibdib') Family of Apps
 
-- Dib2Calc, aka Dibdib Calculator: https://gitlab.com/dibdib/Dib2Calc
+- Dib2Calc, aka Dibdib Calculator:
 
-- Dib2Qm, aka Dibdib Messenger: https://gitlab.com/gxworks/Dib2Qm
+https://gitlab.com/dibdib/Dib2Calc
 
-- Dib2Co, aka Dibdib Console (reader): https://gitlab.com/gxworks/Dib2Co
+- Dib2Qm, aka Dibdib Messenger:
+
+https://gitlab.com/gxworks/Dib2Qm
+
+- Dib2Co, aka Dibdib Console (reader):
+
+https://gitlab.com/gxworks/Dib2Co
 
 - Dib2Note (not yet)
 
@@ -25,10 +31,13 @@ Copyright (C) 2016,2017,2018,2019,2020  Roland Horsch < gx work s{at}g mail.c om
     GNU General Public License and the LICENSE file for more details.
 
 See LICENSE file and the compatible full texts under
+
 https://github.com/gxworks/dibdib
+
 (i.e. https://github.com/gxworks/dibdib/blob/master/LICENSE
 and
-https://github.com/gxworks/dibdib/blob/master/doc/LICENSE_all)
+https://github.com/gxworks/dibdib/blob/master/docs/LICENSE_all)
+
 (or each (compatible) license file as part of the source code ('assets'/ 'resources')). 
 
 (Impressum: https://gxworks.github.io/impressum)

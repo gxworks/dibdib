@@ -16,7 +16,7 @@ See LICENSE file and the compatible full texts under
 https://github.com/gxworks/dibdib
 (i.e. https://github.com/gxworks/dibdib/blob/master/LICENSE
 and
-https://github.com/gxworks/dibdib/blob/master/doc/LICENSE_all)
+https://github.com/gxworks/dibdib/blob/master/docs/LICENSE_all)
 (or each (compatible) license file as part of the source code ('assets'/ 'resources')). 
 
 (Impressum: https://gxworks.github.io/impressum)
