@@ -7,7 +7,8 @@
 
 See 'docs' or https://gxworks.github.io/dibdib for further details.
 
-Copyright (C) 2016,2017,2018,2019,2020  Roland Horsch < gx work s{at}g mail.c om >.
+Copyright (C) 2016,2017,2018,2019,2020  Roland Horsch < gx work
+s{at}ma il.de >.
 
     Each program is free software, licensed under the GNU General Public License
     version 3. It is distributed WITHOUT ANY WARRANTY.
