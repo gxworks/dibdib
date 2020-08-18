@@ -20,9 +20,9 @@ private static int[] zGfReduction = new int[] { 0, 0, 3, 3, 3, 5, 3, 3, 27, 3, 9
 };
 
 /** Calculate Damm check digit for base 2^n, n<=30. */
-public static int checkDigit( int[] digits, int bits ) {
+public static int checkDigit( int[] digits, int bits) {
 	final int modulus = (1 << bits);
-	final int mask = modulus | zGfReduction[ bits ];
+	final int mask = modulus | zGfReduction[bits];
 	int cd = 0;
 	for (int digit : digits) {
 		cd ^= digit;
@@ -34,15 +34,15 @@ public static int checkDigit( int[] digits, int bits ) {
 	return cd;
 }
 
-public static int[][] lookupTable( int bits ) {
-	int[] inv = new int[ 1 << bits ];
-	for (int i0 = 0; i0 < (1 << bits); ++ i0) {
-		inv[ checkDigit( new int[] { i0 }, bits ) ] = i0;
+public static int[][] lookupTable( int bits) {
+	int[] inv = new int[1 << bits];
+	for (int i0 = 0; i0 < (1 << bits); ++i0) {
+		inv[checkDigit( new int[] { i0 }, bits)] = i0;
 	}
-	int[][] out = new int[ 1 << bits ][ 1 << bits ];
-	for (int ir = 0; ir < (1 << bits); ++ ir) {
-		for (int ic = 0; ic < (1 << bits); ++ ic) {
-			out[ ir ][ ic ] = checkDigit( new int[] { inv[ ir ], ic }, bits );
+	int[][] out = new int[1 << bits][1 << bits];
+	for (int ir = 0; ir < (1 << bits); ++ir) {
+		for (int ic = 0; ic < (1 << bits); ++ic) {
+			out[ir][ic] = checkDigit( new int[] { inv[ir], ic }, bits);
 		}
 	}
 	return out;
