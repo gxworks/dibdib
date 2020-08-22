@@ -13,6 +13,8 @@ s{at}ma il.de >.
     Each program is free software, licensed under the GNU General Public License
     version 3. It is distributed WITHOUT ANY WARRANTY.
 
+-----
+
 See LICENSE file and the compatible full texts under
 https://github.com/gxworks/dibdib
 (i.e. https://github.com/gxworks/dibdib/blob/master/LICENSE

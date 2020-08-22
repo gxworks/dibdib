@@ -28,6 +28,7 @@ Basic ideas:
 Usage:
 
 - Currently, the 'long click' does not work.
+- A SWIPE does not work. Use the blue keys on the 4 sides instead (SCROLL).
 - ESC (see figure) resets the view, a long click will exit (not yet).
 - The main view is an overlay of keyboard buttons (blue and green) and the
   displayed lines of the calculator's stack (black): '12' is the value of the
@@ -37,9 +38,10 @@ Usage:
   display.
 - The first toolbar button LA-NG switches the language.
 - The second button indicates and switches the view (VW). This will take you
-  to the current list of operators and to the license, and back.
+  to experimental mappings, then to the current list of operators, to the
+  license, and back.
 - The layer (LY) buttons are not fully implemented yet.
-- The filter (QF-IL) applies to stored data mappings.
+- The filter (QF-IL) applies to stored data mappings (experimental).
 - GO is the button for applying (executing) operators (commands). Only some
   basic operators ('+', '-', '*', '/', ...) work immediately (i.e. without
   'GO').
@@ -75,6 +77,18 @@ Download area via the SAVTO function.
 The app requires some extra processing in the background (e.g. for loading and
 saving). Depending on your system settings, this might cause a few 'hiccups'
 for the time being ...
+
+An installable APK file can be downloaded from:
+
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.gitlab.dibdib.dib2calc/)
+
+https://f-droid.org/packages/com.gitlab.dibdib.dib2calc
+(for stable versions)
+
+https://www.magentacloud.de/share/x5x-ox77lf
+(for experimental (!) versions)
 
 -----
 

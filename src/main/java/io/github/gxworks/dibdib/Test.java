@@ -202,6 +202,9 @@ protected boolean test_UtilMisc_createId() throws IOException {
 	ok = ok && !(cmp0.substring( 4, cmp0.length() - 1).equals( cmp1.substring( 4, cmp1.length() - 1)));
 	System.out.println( "" + ok + " x a \t" + cmpx + '\t' + cmp1);
 	cmp0 = MiscFunc.createId( "a");
+	if ('~' == cmp0.charAt( 6)) {
+		cmp0 = MiscFunc.createId( "a");
+	}
 	cmpx = cmp0.substring( 0, 5) + "001" + (char) (cmp0.charAt( 6) + 2) + cmp0.substring( 7);
 	MiscFunc.initLastId( cmpx);
 	cmp1 = MiscFunc.createId( "a");

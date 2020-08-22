@@ -15,20 +15,24 @@
 - Dib2Note (not yet)
 
 Each app's full project is stored under gitlab.com (as noted), the shared files are
-stored under dibdib.sf.net, and the overview is stored under github.com/gxworks.
+stored under dibdib.sf.net, the overview and the tests are stored under
+github.com/gxworks.
 
-Copyright (C) 2016,2017,2018,2019,2020  Roland Horsch < gx work s{at}g mail.c om >.
+Copyright (C) 2016,2017,2018,2019,2020  Roland Horsch <gx work
+s{at}ma il.de >.
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version (or, but only for the 'dibdib.all'
+    (at your option) any later version (or, but only for the 'net.sf.dibdib'
     parts of the source code, the matching LGPL variant of GNU).
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License and the LICENSE file for more details.
+
+-----
 
 See LICENSE file and the compatible full texts under
 
