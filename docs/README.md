@@ -8,6 +8,10 @@
 
   https://gitlab.com/gxworks/Dib2Qm
 
+- Dib2J
+
+  https://gitlab.com/dibdib/Dib2J
+
 - Dib2Co, aka Dibdib Console (reader):
 
   https://gitlab.com/gxworks/Dib2Co
@@ -18,7 +22,7 @@ Each app's full project is stored under gitlab.com (as noted), the shared files 
 stored under dibdib.sf.net, the overview and the tests are stored under
 github.com/gxworks.
 
-Copyright (C) 2016,2017,2018,2019,2020  Roland Horsch <gx work
+Copyright (C) 2016,2017,2018,2019,2020,2021  Roland Horsch <gx work
 s{at}ma il.de >.
 
     This program is free software: you can redistribute it and/or modify
@@ -42,6 +46,6 @@ https://github.com/gxworks/dibdib
 and
 https://github.com/gxworks/dibdib/blob/master/docs/LICENSE_all)
 
-(or each (compatible) license file as part of the source code ('assets'/ 'resources')). 
+(or each (compatible) license file as part of the source code ('assets'/ 'resources')).
 
 (Impressum: https://gxworks.github.io/impressum)

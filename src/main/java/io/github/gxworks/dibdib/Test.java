@@ -644,121 +644,88 @@ protected boolean test_QMap_threaded( boolean print) {
 	return ok;
 }
 
-private boolean rfcCheck( String in, String expected, boolean old) {
+private boolean rfcCheck( String in, String expected) {
 	String res0 = null;
 	String res = null;
-	if (old) {
-		res = res0 = StringFunc.str4Mnemonics_OLD( in.replace( "_{{", "{{").replace( "_[[", "[[")
-			.replace( "_<", "_{").replace( "}}_", "}}").replace( "]]_", "]]").replace( ">_", "}_"));
-		//		if (expected.contains( "}}" )) {
-		//			expected = expected.replace( "{{", "\u0002" ).replace( "}}", "\u0003" );
-		//		}
-	} else {
-		//	expected = expected.replace( "\u0002", "{{" ).replace( "\u0003", "}}" );
-		res = StringFunc.string4Mnemonics( in);
-		String[] tmp = QStrFunc.markedAtoms4String( res);
-		int len = QStrFunc.lists4MarkedAtoms( tmp);
-		res = res0 = "";
-		for (int i0 = 0; i0 < len; ++i0) {
-			res0 += "^" + tmp[i0];
-			if (expected.contains( "\u0002" + tmp[i0] + "\u0003") && !res.startsWith( "\u0002")) {
-				res += "\u0002" + tmp[i0] + "\u0003";
-			} else if ('\ue000' <= tmp[i0].charAt( 0)) {
-				res += tmp[i0].substring( 1);
-			} else {
-				res += tmp[i0];
-			}
+	//	expected = expected.replace( "\u0002", "{{" ).replace( "\u0003", "}}" );
+	res = StringFunc.string4Mnemonics( in);
+	String[] tmp = QStrFunc.markedAtoms4String( res);
+	int len = QStrFunc.lists4MarkedAtoms( tmp);
+	res = res0 = "";
+	for (int i0 = 0; i0 < len; ++i0) {
+		res0 += "^" + tmp[i0];
+		if (expected.contains( "\u0002" + tmp[i0] + "\u0003") && !res.startsWith( "\u0002")) {
+			res += "\u0002" + tmp[i0] + "\u0003";
+		} else if ('\ue000' <= tmp[i0].charAt( 0)) {
+			res += tmp[i0].substring( 1);
+		} else {
+			res += tmp[i0];
 		}
 	}
 	boolean ok = expected.equals( res);
 	if (!ok) {
 		System.out.println( "!!" + expected);
 	}
-	System.out.println( "" + ok + (old ? " X" : "") + '\t' + in + '\t' + res0);
+	System.out.println( "" + ok + '\t' + in + '\t' + res0);
 	return ok;
 }
 
 protected boolean test_rfc1345() {
 	boolean ok = true;
 	Random randGen = new Random( 42);
-	for (boolean old = false; true; old = !old) {
-		ok = ok && rfcCheck( "abc_{{def}}_g", "abc\u0002def\u0003g", old);
-		ok = ok && rfcCheck( "_{{abcdefg}}_", "abcdefg", old);
-		ok = ok && rfcCheck( "_{{abcdef}}_g", "\u0002abcdef\u0003g", old);
-		ok = ok && rfcCheck( "abc_{{defg}}_", "abc\u0002defg\u0003", old);
-		ok = ok && rfcCheck( "ab{c_{{d{efg}}_", "ab{c\u0002d{efg\u0003", old);
-		ok = ok && rfcCheck( "ab}c}_{{def}g}}_", "ab}c}\u0002def}g\u0003", old);
-		ok = ok && rfcCheck( "_[[abcdefg]]_", "\u0004abcdefg\u0005", old);
-		ok = ok && rfcCheck( "abc_{{def}}_gabc_{{def}}_g", "abc\u0002def\u0003gabc\u0002def\u0003g", old);
-		System.out.println( "_K_abK_Y__aY_ => " + StringFunc.string4Alpha1345( "_K_abK_Y__aY_"));
-		ok = ok && rfcCheck( "_[_K_abK_Y__aY_]_", "<abK'\u00e1", old);
-		//		if (!old)
-		//			break;
-		//		ok = ok && rfcCheck( "_[_K_abK_Y__aY_]__A__[_K_abK_Y__aY]__[_K_abK_Y__aY__U]", "<abK'\u00e1A<abK'\u00e1<abK'\u00e1", old );
-		//		ok = ok && rfcCheck( "'_a'__a:__aa_bc_{{a'a:_a'_{_a:_{{_}}a}abc}}_ge_a'__a:_'",
-		//			"'\u00e1\u00e4\u00e5bc\u0002a'a:_a'_{_a:_{{_}}a}abc\u0003ge\u00e1\u00e4\'", old );
-		//		ok = ok && rfcCheck( "'_A'__e:__AA_bc_{{a'a:_a'__{{_a:_a}}_abc}}_ge_a'__A:_'",
-		//			"'\u00c1\u00eb\u00c5bc\u0002a'a:_a'_{{_a:_a}}_abc\u0003ge\u00e1\u00c4\'", old );
-		//		ok = ok && rfcCheck( "_A:__12345678__(__123_(_12345678_(__12345678__(_12345678__A_A__A____A___A__A__",
-		//			"\u00c412345678_(_123(12345678(12345678_(12345678_AAA_A_A_A_", old );
-		String tCtrl = "L$ \t.";
-		//	char[] aCtrl = tCtrl.toCharArray();
-		//	StringFunc.test_replaceCtrlNOld( aCtrl, 0, aCtrl.length );
-		ok = ok && tCtrl.equals( StringFunc.makePrintable( tCtrl)); //new String( aCtrl ) );
-		for (int i1 = 0; (i1 < 33) && ok; ++i1) {
-			char[] rand = createRandomString( randGen, 12); //88
-			StringFunc.replaceCtrlNOld( rand, 0, rand.length);
-			String xrand = new String( rand).replace( "\u0000", "");
-			rand = xrand.toCharArray();
-			String in = StringFunc.mnemonics4String( xrand, true, true);
-			String out = StringFunc.string4Mnemonics( in.replace( "\n", ""));
-			if (old) {
-				in = StringFunc.mnemonics4String_OLD( xrand, true, true);
-				out = StringFunc.str4Mnemonics_OLD( in.replace( "\n", ""));
-			}
-			if (!xrand.equals( out)) { //new String( axr ) )) {
-				System.out.println( "!! " + (old ? 'X' : ' ') + '\t' + in.replaceAll( "[^ -z]", "^") + '\t'
-					+ out.replaceAll( "[^ -z]", "^"));
-				ok = false;
-			}
-			if (!old) {
-				in = StringFunc.mnemonics4String( xrand, false, false);
-				out = StringFunc.string4Mnemonics( in);
-				//				in = StringFunc.mnemonics4String_OLD( xrand, false, false );
-				//				out = StringFunc.str4Mnemonics_OLD( in );
-				//			ok = ok && rfcCheck( in, out, old );
-				if (!StringFunc.equalsRoughly( xrand, out)) { //new String( axr ) )) {
-					System.out.println( "!! " + (old ? 'X' : ' ') + '\t' + in.replaceAll( "[^ -z]", "^") + '\t'
-						+ out.replaceAll( "[^ -z]", "^"));
-					ok = false;
-				} else {
-					System.out.println( "true " + (old ? 'X' : ' ') + '\t' + in.replaceAll( "[^ -z]", "^") + '\t'
-						+ out.replaceAll( "[^ -z]", "^"));
-				}
-			}
+//	for (boolean old = false; true; old = !old) {
+	ok = ok && rfcCheck( "abc_{{def}}_g", "abc\u0002def\u0003g");
+	ok = ok && rfcCheck( "_{{abcdefg}}_", "abcdefg");
+	ok = ok && rfcCheck( "_{{abcdef}}_g", "\u0002abcdef\u0003g");
+	ok = ok && rfcCheck( "abc_{{defg}}_", "abc\u0002defg\u0003");
+	ok = ok && rfcCheck( "ab{c_{{d{efg}}_", "ab{c\u0002d{efg\u0003");
+	ok = ok && rfcCheck( "ab}c}_{{def}g}}_", "ab}c}\u0002def}g\u0003");
+	ok = ok && rfcCheck( "_[[abcdefg]]_", "\u0004abcdefg\u0005");
+	ok = ok && rfcCheck( "abc_{{def}}_gabc_{{def}}_g", "abc\u0002def\u0003gabc\u0002def\u0003g");
+	System.out.println( "_K_abK_Y__aY_ => " + StringFunc.string4Alpha1345( "_K_abK_Y__aY_"));
+	ok = ok && rfcCheck( "_[_K_abK_Y__aY_]_", "<abK'\u00e1");
+	String tCtrl = "L$ \t.";
+	ok = ok && tCtrl.equals( StringFunc.makePrintable( tCtrl)); //new String( aCtrl ) );
+	for (int i1 = 0; (i1 < 33) && ok; ++i1) {
+		char[] rand = createRandomString( randGen, 12); //88
+		StringFunc.replaceCtrlNOld( rand, 0, rand.length);
+		String xrand = new String( rand).replace( "\u0000", "");
+		rand = xrand.toCharArray();
+		String in = StringFunc.mnemonics4String( xrand, true, true);
+		String out = StringFunc.string4Mnemonics( in.replace( "\n", ""));
+		if (!xrand.equals( out)) { //new String( axr ) )) {
+			System.out.println( "!!  " + '\t' + in.replaceAll( "[^ -z]", "^") + '\t'
+				+ out.replaceAll( "[^ -z]", "^"));
+			ok = false;
 		}
-		if (!old) {
-			break;
+		in = StringFunc.mnemonics4String( xrand, false, false);
+		out = StringFunc.string4Mnemonics( in);
+		if (!StringFunc.equalsRoughly( xrand, out)) { //new String( axr ) )) {
+			System.out.println( "!!  " + '\t' + in.replaceAll( "[^ -z]", "^") + '\t'
+				+ out.replaceAll( "[^ -z]", "^"));
+			ok = false;
+		} else {
+			System.out.println( "true  " + '\t' + in.replaceAll( "[^ -z]", "^") + '\t'
+				+ out.replaceAll( "[^ -z]", "^"));
 		}
 	}
-	ok = ok && rfcCheck( "abc{_{gabc_{{def}}_g}}_", "abc\u0002gabc\u0002def\u0003g\u0003", true);
-	ok = ok && rfcCheck( "abc{_{gabc_{{def}}_g}}_", "abc{{gabcdefg}}_", false);
-	ok = ok && rfcCheck( "abc_{{def_{{gabc}}_def}}_g", "abc\u0002def{{gabc}}def\u0003g", true);
-	ok = ok && rfcCheck( "abc_{{def_{{gabc}}_def}}_g", "abc\u0002def\u0002gabc\u0003def\u0003g", false);
-	ok = ok && rfcCheck( "abc{_{gabc[[def]]g}}_", "abc\u0002gabc\u0004def\u0005g\u0003", true);
-	ok = ok && rfcCheck( "abc{_{gabc[[def]]g}}_", "abc{{gabc[[def]]g}}_", false);
-	ok = ok && rfcCheck( "abc{_{{{gabc[[def]]g}}_}}_", "abc{{gabc[[def]]g}}_", false);
-	ok = ok && rfcCheck( "abc{{gabc_[[def]]_g}}", "abc{{gabc\u0004def\u0005g}}", false);
+	ok = ok && rfcCheck( "abc{_{gabc_{{def}}_g}}_", "abc\u0002gabc\u0002def\u0003g\u0003");
+	ok = ok && rfcCheck( "abc{_{gabc_{{def}}_g}}_", "abc{{gabcdefg}}_");
+	ok = ok && rfcCheck( "abc_{{def_{{gabc}}_def}}_g", "abc\u0002def{{gabc}}def\u0003g");
+	ok = ok && rfcCheck( "abc_{{def_{{gabc}}_def}}_g", "abc\u0002def\u0002gabc\u0003def\u0003g");
+	ok = ok && rfcCheck( "abc{_{gabc[[def]]g}}_", "abc\u0002gabc\u0004def\u0005g\u0003");
+	ok = ok && rfcCheck( "abc{_{gabc[[def]]g}}_", "abc{{gabc[[def]]g}}_");
+	ok = ok && rfcCheck( "abc{_{{{gabc[[def]]g}}_}}_", "abc{{gabc[[def]]g}}_");
+	ok = ok && rfcCheck( "abc{{gabc_[[def]]_g}}", "abc{{gabc\u0004def\u0005g}}");
 	ok = ok && rfcCheck( "__x_ abc{_{def__gab_{c}}g_{{def__gabc}}g",
-		"_xabc\u0002def_gab\u000ec\u000f}g\u0002def__gabc\u0003g", true);
-	ok = ok && rfcCheck( "__x_ abc_{{def__gab_{c}}_g_{{def__gabc}}g", "_xabc\u0002def_gab{c\u0003g{{def_gabc}}g",
-		false);
-	ok = ok && rfcCheck( "abc{_ {gabc}}g", "abc{{gabc\u0003g", true);
-	ok = ok && rfcCheck( "abc{_ {gabc}}g", "abc{{gabc}}g", false);
-	ok = ok && rfcCheck( "_#42_{}{_ {}_ }}_}}_}", "B{}{{}\u0003\u0003}", true);
-	ok = ok && rfcCheck( "_#42_{}{_ {}_ }}_}}_}", "B{}{{}}}}}", false);
-	ok = ok && rfcCheck( "_#42__#20__#30__#1__#7B__#6__#40__#2020_", "B 0_{" + StringFunc.ZW + "@\u2020", true);
-	ok = ok && rfcCheck( "_#42__#20__#30__#1__#7B__#6__#40__#2020_", "B 0\u0001{" + StringFunc.ZW + "@\u2020", false);
+		"_xabc\u0002def_gab\u000ec\u000f}g\u0002def__gabc\u0003g");
+	ok = ok && rfcCheck( "__x_ abc_{{def__gab_{c}}_g_{{def__gabc}}g", "_xabc\u0002def_gab{c\u0003g{{def_gabc}}g");
+	ok = ok && rfcCheck( "abc{_ {gabc}}g", "abc{{gabc\u0003g");
+	ok = ok && rfcCheck( "abc{_ {gabc}}g", "abc{{gabc}}g");
+	ok = ok && rfcCheck( "_#42_{}{_ {}_ }}_}}_}", "B{}{{}\u0003\u0003}");
+	ok = ok && rfcCheck( "_#42_{}{_ {}_ }}_}}_}", "B{}{{}}}}}");
+	ok = ok && rfcCheck( "_#42__#20__#30__#1__#7B__#6__#40__#2020_", "B 0_{" + StringFunc.ZW + "@\u2020");
+	ok = ok && rfcCheck( "_#42__#20__#30__#1__#7B__#6__#40__#2020_", "B 0\u0001{" + StringFunc.ZW + "@\u2020");
 	return ok;
 }
 
