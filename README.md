@@ -4,11 +4,11 @@
 - Dib2Qm, aka Dibdib Messenger
 - Dib2J
 - Dib2Co, aka Dibdib Console
-- Dib2Note (not yet)
+- etc.
 
-See 'docs' or https://gxworks.github.io/dibdib for further details.
+See https://dib2x.github.io
 
-Copyright (C) 2016,2017,2018,2019,2020,2021  Roland Horsch < gx work
+Copyright (C) 2016-2022  Roland Horsch < gx work
 s{at}ma il.de >.
 
     Each program is free software, licensed under the GNU General Public License
@@ -16,11 +16,7 @@ s{at}ma il.de >.
 
 -----
 
-See LICENSE file and the compatible full texts under
+Cmp. LICENSE file under
 https://github.com/gxworks/dibdib
-(i.e. https://github.com/gxworks/dibdib/blob/master/LICENSE
-and
-https://github.com/gxworks/dibdib/blob/master/docs/LICENSE_all)
-(or each (compatible) license file as part of the source code ('assets'/ 'resources')).
 
-(Impressum: https://gxworks.github.io/impressum)
+(Impressum: IMPRESSUM.md @ github.com/dib2x/dib2x.github.io = https://github.com/dib2x/dib2x.github.io/blob/main/IMPRESSUM.md)
