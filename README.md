@@ -8,7 +8,7 @@
 
 See https://dib2x.github.io
 
-Copyright (C) 2016-2022  Roland Horsch < gx work
+Copyright (C) 2016-2024  Roland Horsch < gx work
 s{at}ma il.de >.
 
     Each program is free software, licensed under the GNU General Public License
